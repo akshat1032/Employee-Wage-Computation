@@ -3,20 +3,30 @@ package com.capgemini.employeewagecomputation;
 public class EmployeeWageComputation {
 	
 	//Constants
-	public static final int WAGE_PER_HOUR = 20;
-	public static final int MAX_NO_OF_DAYS = 20;
-	public static final int HOUR_PER_DAY = 8;
-	public static final int PART_TIME_HOUR_PER_DAY = 4;
 	public static final int IS_FULL_TIME = 0;
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_PRESENT = 1;
 	public static final int IS_ABSENT = 0;
 	
 	//Variables
-	private double dailyWage = 0;
-	private double monthlyWage = 0;
-	private int workingDays = 0;
-	private int workingHours = 0;
+	private double dailyWage;
+	private double monthlyWage;
+	private int wagePerHour;
+	private int maxWorkingDays;
+	private int maxWorkingHours;
+	private int hourPerDay;
+	private int workingHours;
+	private int workingDays;
+	
+	//Parameterized constructor
+	public EmployeeWageComputation(int wagePerHour, int maxWorkingDays, int maxWorkingHours, int hourPerDay) {
+		
+		this.wagePerHour = wagePerHour;
+		this.maxWorkingDays = maxWorkingDays;
+		this.maxWorkingHours = maxWorkingHours;
+		this.hourPerDay = hourPerDay;
+		
+	}
 	
 	//Checking Type of Employee
 	public int checkEmployeeType() {
@@ -35,13 +45,13 @@ public class EmployeeWageComputation {
 	//Employee Wage Calculation
 	public double calculateEmployeeWage(int hourPerDay) {
 		
-		while (workingHours<100 && workingDays<20) {
+		while (this.workingHours<this.maxWorkingHours && this.workingDays<this.maxWorkingDays) {
 			
 			int empAttendance = this.checkEmployeeAttendance();
 			switch (empAttendance) {
 			case IS_PRESENT:
-				this.dailyWage = WAGE_PER_HOUR * hourPerDay;
-				this.monthlyWage = monthlyWage + dailyWage;
+				this.dailyWage = this.wagePerHour * hourPerDay;
+				this.monthlyWage = this.monthlyWage + this.dailyWage;
 				this.workingHours = this.workingHours + hourPerDay;
 				this.workingDays = this.workingDays + 1;
 				break;
@@ -50,7 +60,7 @@ public class EmployeeWageComputation {
 			}
 		}
 		
-		return monthlyWage;
+		return this.monthlyWage;
 	}
 	
 	//Printing the Employee Wage
@@ -58,24 +68,17 @@ public class EmployeeWageComputation {
 		
 		double monthlyWage = 0;
 		String empType = "";
-		System.out.println("No. of Days  	"+"No. of Hours  	"+"Monthly Wage  	"+"Type of Employee");
 		switch(empCheck) {
 		case IS_FULL_TIME:
-			monthlyWage = this.calculateEmployeeWage(HOUR_PER_DAY);
+			monthlyWage = this.calculateEmployeeWage(this.hourPerDay);
 			empType = "Full Time";
 			break;
 		case IS_PART_TIME:
-			monthlyWage = this.calculateEmployeeWage(PART_TIME_HOUR_PER_DAY);
+			monthlyWage = this.calculateEmployeeWage(this.hourPerDay/2);
 			empType = "Part Time";
 			break;
 		}
-			System.out.println(this.workingDays+"		"+this.workingHours+"	        "+monthlyWage+"		"+empType);
+			System.out.println(this.maxWorkingDays+"		"+this.maxWorkingHours+"	        "+monthlyWage+"		"+empType);
 		}
 	
-	public static void main(String[] args) {
-			
-		EmployeeWageComputation empWage = new EmployeeWageComputation();
-		int empCheck = empWage.checkEmployeeType();
-		empWage.printEmployeeWage(empCheck);
-	}
 }
