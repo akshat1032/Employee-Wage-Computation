@@ -43,7 +43,7 @@ public class EmployeeWageComputation {
 	}
 	
 	//Employee Wage Calculation
-	public double calculateEmployeeWage(int hourPerDay) {
+	public void calculateEmployeeWage(int hourPerDay) {
 		
 		while (this.workingHours<this.maxWorkingHours && this.workingDays<this.maxWorkingDays) {
 			
@@ -59,26 +59,23 @@ public class EmployeeWageComputation {
 				continue;
 			}
 		}
-		
-		return this.monthlyWage;
 	}
 	
 	//Printing the Employee Wage
 	public void printEmployeeWage(int empCheck) {
 		
-		double monthlyWage = 0;
 		String empType = "";
 		switch(empCheck) {
 		case IS_FULL_TIME:
-			monthlyWage = this.calculateEmployeeWage(this.hourPerDay);
+			this.calculateEmployeeWage(this.hourPerDay);
 			empType = "Full Time";
 			break;
 		case IS_PART_TIME:
-			monthlyWage = this.calculateEmployeeWage(this.hourPerDay/2);
+			this.calculateEmployeeWage(this.hourPerDay/2);
 			empType = "Part Time";
 			break;
 		}
-			System.out.println(this.maxWorkingDays+"		"+this.maxWorkingHours+"	        "+monthlyWage+"		"+empType);
+			System.out.println(this.maxWorkingDays+"		"+this.maxWorkingHours+"	        "+this.monthlyWage+"		"+empType);
 		}
 	
 }
