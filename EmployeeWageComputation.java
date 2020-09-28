@@ -77,6 +77,6 @@ public class EmployeeWageComputation {
 			empType = "Part Time";
 			break;
 		}
-			System.out.println(this.companyName+"	"+this.workingDays+"		"+this.workingHours+"	        "+this.monthlyWage+"		"+empType);
+			System.out.println(this.companyName+"	"+this.workingDays+"		"+this.workingHours+"	        "+this.dailyWage+"		"+this.monthlyWage+"		"+empType);
 	}
 }

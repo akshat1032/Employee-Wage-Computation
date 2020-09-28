@@ -34,7 +34,7 @@ public class EmployeeWageComputationMain implements EmployeeWageComputationInter
 	
 	public static void main(String[] args) {
 		
-		System.out.println("Company Name	"+"No. of Days  	"+"No. of Hours  	"+"Monthly Wage  	"+"Type of Employee");
+		System.out.println("Company Name	"+"No. of Days  	"+"No. of Hours  	"+"Daily Wage	"+"Monthly Wage  	"+"Type of Employee");
 		
 		EmployeeWageComputationMain printObject = new EmployeeWageComputationMain();
 		printObject.printEmployeeWage();
