@@ -18,6 +18,7 @@ public class EmployeeWageComputation {
 	private int workingHours;
 	private int workingDays;
 	private String companyName;
+	private String empType;
 	
 	//Parameterized constructor
 	public EmployeeWageComputation(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours, int hourPerDay) {
@@ -62,21 +63,30 @@ public class EmployeeWageComputation {
 			}
 		}
 	}
-	
-	//Printing the Employee Wage
-	public void printEmployeeWage(int empCheck) {
+	//Returning name of the company
+	public String getCompanyName() {
 		
-		String empType = "";
+		return this.companyName;
+	}
+	
+	//Storing the Employee Wage
+	public void storeEmployeeWage(int empCheck) {
+		
 		switch(empCheck) {
 		case IS_FULL_TIME:
 			this.calculateEmployeeWage(this.hourPerDay);
-			empType = "Full Time";
+			this.empType = "Full Time";
 			break;
 		case IS_PART_TIME:
 			this.calculateEmployeeWage(this.hourPerDay/2);
-			empType = "Part Time";
+			this.empType = "Part Time";
 			break;
 		}
-			System.out.println(this.companyName+"	"+this.workingDays+"		"+this.workingHours+"	        "+this.dailyWage+"		"+this.monthlyWage+"		"+empType);
+	}
+	
+	//Printing the wage by company name
+	public void printTotalWage() {
+		
+		System.out.println(this.companyName+"	"+this.workingDays+"		"+this.workingHours+"	        "+this.dailyWage+"		"+this.monthlyWage+"		"+this.empType);
 	}
 }
