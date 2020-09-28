@@ -17,10 +17,12 @@ public class EmployeeWageComputation {
 	private int hourPerDay;
 	private int workingHours;
 	private int workingDays;
+	private String companyName;
 	
 	//Parameterized constructor
-	public EmployeeWageComputation(int wagePerHour, int maxWorkingDays, int maxWorkingHours, int hourPerDay) {
+	public EmployeeWageComputation(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours, int hourPerDay) {
 		
+		this.companyName = companyName;
 		this.wagePerHour = wagePerHour;
 		this.maxWorkingDays = maxWorkingDays;
 		this.maxWorkingHours = maxWorkingHours;
@@ -75,7 +77,7 @@ public class EmployeeWageComputation {
 			empType = "Part Time";
 			break;
 		}
-			System.out.println(this.maxWorkingDays+"		"+this.maxWorkingHours+"	        "+this.monthlyWage+"		"+empType);
+			System.out.println(this.companyName+"	"+this.maxWorkingDays+"		"+this.maxWorkingHours+"	        "+this.monthlyWage+"		"+empType);
 		}
 	
 }
